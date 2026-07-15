@@ -36,6 +36,6 @@ app.use("/projects",projectRouter);
 
 
 app.listen(8080, () => {
-    connect("mongodb://localhost:27017/spline_portfolio");
+    connect(process.env.MONGODB_URI);
     console.log("app is running at http://localhost:8080");
 })
