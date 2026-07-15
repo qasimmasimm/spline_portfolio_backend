@@ -22,6 +22,12 @@ app.use(
   }),
 );
 
+
+
+app.use(cors({
+  origin: "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app/",
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
@@ -36,3 +42,9 @@ connect(process.env.MONGODB_URI)
   .catch(err => console.log(err));
 
 module.exports = app;
+
+
+app.listen(8080, () => {
+    connect("mongodb://localhost:27017/spline_portfolio");
+    console.log("app is running at http://localhost:8080");
+})
