@@ -21,7 +21,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app"
+    "https://spline-portfolio-frontend.vercel.app"
   ],
   credentials: true
 }));
@@ -43,5 +43,5 @@ app.use("/projects",projectRouter);
 
 app.listen(8080, () => {
     connect(process.env.MONGODB_URI);
-    console.log("app is running at http://localhost:8080");
+    console.log("app is running at vercel");
 })
