@@ -45,6 +45,6 @@ module.exports = app;
 
 
 app.listen(8080, () => {
-    connect("mongodb://localhost:27017/spline_portfolio");
-    console.log("app is running at http://localhost:8080");
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("app is running ");
 })
