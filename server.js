@@ -34,7 +34,7 @@ app.use("/projects", projectRouter);
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.LOCAL_MONGODB_URI);
 
     console.log("Connected to Database");
   } catch (err) {
