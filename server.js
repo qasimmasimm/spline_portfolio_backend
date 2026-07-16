@@ -37,17 +37,10 @@ app.use("/auth", userRouter);
 app.use("/contact", contactRouter);
 app.use("/projects", projectRouter);
 
-connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+
 
 module.exports = app;
 
-
-// app.listen(8080,async  () => {
-//     await mongoose.connect(process.env.MONGODB_URI);
-//     console.log("app is running ");
-// })
 
 
 const connected=async ()=>{
