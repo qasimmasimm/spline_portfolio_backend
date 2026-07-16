@@ -44,7 +44,23 @@ connect(process.env.MONGODB_URI)
 module.exports = app;
 
 
-app.listen(8080, () => {
+// app.listen(8080,async  () => {
+//     await mongoose.connect(process.env.MONGODB_URI);
+//     console.log("app is running ");
+// })
+
+
+const connected=async ()=>{
+  try{
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log("app is running ");
-})
+    console.log("connected to Database successfully");
+    const PORT=process.env.PORT || 8080;
+    app.listen(PORT,()=>{
+      console.log(`app is running at ${PORT}`)
+    })
+  }catch(err){
+    console.log("Database connection failed:",err.message)
+  }
+}
+
+connected();
