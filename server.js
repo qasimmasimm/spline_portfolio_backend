@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const mongoose=require("mongoose")
+const mongoose = require("mongoose");
 const path = require("path");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -22,12 +22,13 @@ app.use(
   }),
 );
 
-
-
-app.use(cors({
-  origin: "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app/",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin:
+      "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app/",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
@@ -37,23 +38,13 @@ app.use("/auth", userRouter);
 app.use("/contact", contactRouter);
 app.use("/projects", projectRouter);
 
-
-
-module.exports = app;
-
-
-
-const connected=async ()=>{
-  try{
+const connect = async () => {
+  try {
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log("connected to Database successfully");
-    const PORT=process.env.PORT || 8080;
-    app.listen(PORT,()=>{
-      console.log(`app is running at ${PORT}`)
-    })
-  }catch(err){
-    console.log("Database connection failed:",err.message)
+    console.log("Connected to Database");
+  } catch (err) {
+    console.log("Failed to connect to Database", err.message);
   }
-}
+};
 
-connected();
+connect();
