@@ -17,10 +17,10 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://spline-portfolio-frontend.vercel.app",
-      "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app" 
+      "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app",
     ],
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -35,10 +35,13 @@ app.use("/projects", projectRouter);
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
+
     console.log("Connected to Database");
   } catch (err) {
     console.log("Failed to connect to Database", err.message);
   }
 };
 
-connect();
+app.listen(8080, () => {
+  connect();
+});
