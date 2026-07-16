@@ -14,11 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://spline-portfolio-frontend.vercel.app",
-      "https://spline-portfolio-frontend-qjmc-n30tun6en-qasimmasimms-projects.vercel.app",
-    ],
+    origin:" http://localhost:5173",
     credentials: true,
   }),
 );
